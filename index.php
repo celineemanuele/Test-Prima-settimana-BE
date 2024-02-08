@@ -16,11 +16,12 @@ $libri = getAllBooks($mysqli);
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
@@ -37,31 +38,19 @@ $libri = getAllBooks($mysqli);
       </a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Books</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Store</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Access</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">News</a>
+          <a class="nav-link" href="#">La mia Libreria</a>
         </li>
       </ul>
     </div>
 
-    <!-- Right elements -->
     <div class="d-flex align-items-center px-2">
-    <button type="button" class="btn btn-primary  d-flex mx-2" data-mdb-toggle="modal" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#modaleAggiunta">
+    <button type="button" class="btnadd btn d-flex mx-2" data-mdb-toggle="modal" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#modaleAggiunta">
         Aggiungi libro
     </button>
-      <!-- Icon -->
       <a class="text-reset me-3" href="#">
         <i class="fas fa-shopping-cart"></i>
       </a>
 
-      <!-- Notifications -->
       <div class="dropdown">
         <a data-mdb-dropdown-init class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
           <i class="fas fa-bell"></i>
@@ -81,25 +70,10 @@ $libri = getAllBooks($mysqli);
       </div>
       <!-- Avatar -->
       <div class="dropdown">
-        <a
-          data-mdb-dropdown-init
-          class="dropdown-toggle d-flex align-items-center hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuAvatar"
-          role="button"
-          aria-expanded="false"
-        >
-        <img
-              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-              alt=""
-              style="width: 45px; height: 45px"
-              class="rounded-circle"
-              />
+        <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">
+        <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle"/>
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
           <li>
             <a class="dropdown-item" href="#">My profile</a>
           </li>
@@ -124,9 +98,9 @@ $libri = getAllBooks($mysqli);
     </button>-->
 
     <table class="table table-hover container mt-5 border">
-        <thead>
+        <thead id="styletable">
             <tr class="text-center">
-                <th scope="col">ID</th>
+                <th scope="col">#</th>
                 <th scope="col">Titolo</th>
                 <th scope="col">Autore</th>
                 <th scope="col">Anno</th>
@@ -138,7 +112,7 @@ $libri = getAllBooks($mysqli);
             <?php foreach ($libri as $key => $libro) { ?>
                 <tr class="text-center">
                     <th scope="row">
-                        <?= $libro['id'] ?>
+                    <?= $key+1 ?>
                     </th>
                     <td>
                         <?= $libro['titolo'] ?>
@@ -154,10 +128,10 @@ $libri = getAllBooks($mysqli);
                     </td>
                     <th>
                         <div class="d-flex justify-content-evenly align-items-center">
-                            <a role="button" class="btn btn-warning px-2 py-1" data-mdb-toggle="modal"
-                                data-mdb-target="#modaleUpdate_<?= $libro['id'] ?>"><i class="fas fa-pencil"></i></a>
-                            <a role="button" class="btn btn-danger px-2 py-1"
-                                href="gestione.php?action=remove&id=<?= $libro['id'] ?>"><i class="fas fa-trash-can"></i></a>
+                            <a role="button" class="btn  px-2 py-1 border-warning" data-bs-toggle="modal"
+                                data-bs-target="#modaleUpdate_<?= $libro['id'] ?>"><i class="fas fa-pencil text-warning"></i></a>
+                            <a role="button" class=" deletebtn btn px-2 py-1 border-danger"
+                                href="gestione.php?action=remove&id=<?= $libro['id'] ?>"><i class="fas fa-trash-can text-danger"></i></a>
                         </div>
                     </th>
                 </tr>
@@ -167,7 +141,7 @@ $libri = getAllBooks($mysqli);
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5">Modifica i dati</h1>
-                                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form method="POST" action="gestione.php">
@@ -195,7 +169,7 @@ $libri = getAllBooks($mysqli);
                                     </div>
                                     <div class="modal-footer border-0">
                                         <button type="button" class="btn btn-secondary"
-                                            data-mdb-dismiss="modal">Chiudi</button>
+                                            data-bs-dismiss="modal">Chiudi</button>
                                         <button type="submit" class="btn btn-primary" name="action" value="update">Aggiorna
                                             libro</button>
                                     </div>
@@ -208,7 +182,7 @@ $libri = getAllBooks($mysqli);
         </tbody>
     </table>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 </body>
 

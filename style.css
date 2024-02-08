@@ -1,0 +1,23 @@
+.navbar{
+    background: #F5F5DC;
+}
+
+.btnadd{
+    background-color: rgb(252, 42, 42);
+    border-radius: 5em;
+    color:white;
+}
+
+#styletable th{
+    font-weight: bolder;
+    font-family: 'Marcellus SC', serif;
+
+}
+
+a:hover .deletebtn {
+    box-shadow: 3px 3px 3px red;
+}
+
+.btn a:hover {
+    box-shadow: 3px 3px 3px yellow;
+}

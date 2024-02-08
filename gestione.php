@@ -25,10 +25,14 @@ if(!empty($_FILES['image'])) {
 }*/
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $titolo = trim(htmlspecialchars($_REQUEST['titolo'])) ? trim(htmlspecialchars($_REQUEST['titolo'])) : null;
-    $autore = trim(htmlspecialchars($_REQUEST['autore'])) ? trim(htmlspecialchars($_REQUEST['autore'])) : null;
+    $titolo = isset($_REQUEST['titolo']) ? trim(htmlspecialchars($_REQUEST['titolo'])) : null;
+    //$titolo = trim(htmlspecialchars($_REQUEST['titolo'])) ? trim(htmlspecialchars($_REQUEST['titolo'])) : null;
+    /*$autore = trim(htmlspecialchars($_REQUEST['autore'])) ? trim(htmlspecialchars($_REQUEST['autore'])) : null;
     $anno_pubblicazione = trim(htmlspecialchars($_REQUEST['anno_pubblicazione'])) ? trim(htmlspecialchars($_REQUEST['anno_pubblicazione'])) : null;
-    $genere = trim(htmlspecialchars($_REQUEST['genere'])) ? trim(htmlspecialchars($_REQUEST['genere'])) : null;
+    $genere = trim(htmlspecialchars($_REQUEST['genere'])) ? trim(htmlspecialchars($_REQUEST['genere'])) : null;*/
+    $autore = isset($_REQUEST['autore']) ? trim(htmlspecialchars($_REQUEST['autore'])) : null;
+    $anno_pubblicazione = isset($_REQUEST['anno_pubblicazione']) ? trim(htmlspecialchars($_REQUEST['anno_pubblicazione'])) : null;
+    $genere = isset($_REQUEST['genere']) ? trim(htmlspecialchars($_REQUEST['genere'])) : null;
 }
 
 $book = [
@@ -61,7 +65,7 @@ function addBook($mysqli, $book)
     $genere = $book['genere'];
     //$image = $book['image'];
 
-    $sql = "INSERT INTO libri (titolo, autore, anno_pubblicazione, genere /*image*/) 
+    $sql = "INSERT INTO libri (titolo, autore, anno_pubblicazione, genere) 
                 VALUES ('$titolo', '$autore', '$anno_pubblicazione', '$genere')";
     if (!$mysqli->query($sql)) {
         echo ($mysqli->error);
@@ -87,8 +91,8 @@ function updateBook($mysqli, $id, $titolo, $autore, $anno_pubblicazione, $genere
                         titolo = '" . $titolo . "', 
                         autore = '" . $autore . "',
                         anno_pubblicazione = '" . $anno_pubblicazione . "',
-                        genere = '" . $genere . "',
-                        WHERE id = " . $id;
+                        genere = '" . $genere . "'
+                        WHERE id = '" . $id . "'";
     if (!$mysqli->query($sql)) {
         echo ($mysqli->connect_error);
     } else {
