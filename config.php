@@ -39,8 +39,5 @@
     //$mysqli->query($sql);
     if(!$mysqli->query($sql)) { die($mysqli->connect_error); }
 
-    //$sql = "INSERT INTO libri(titolo, autore, anno_pubblicazione, genere) VALUES('Daniele e il superpisello galattico', 'D.V.M', 2000, 'Fantasy Religioso')";
-    //$mysqli->query($sql);
-
     $sql = "";
 ?>
