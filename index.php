@@ -21,7 +21,7 @@ $libri = getAllBooks($mysqli);
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg">
+<!--<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
@@ -44,7 +44,7 @@ $libri = getAllBooks($mysqli);
     </div>
 
     <div class="d-flex align-items-center px-2">
-    <button type="button" class="btnadd btn d-flex mx-2" data-mdb-toggle="modal" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#modaleAggiunta">
+    <button type="button" class=" btn btn-primary d-flex mx-2" data-mdb-toggle="modal" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#modaleAggiunta">
         Aggiungi libro
     </button>
       <a class="text-reset me-3" href="#">
@@ -68,7 +68,6 @@ $libri = getAllBooks($mysqli);
           </li>
         </ul>
       </div>
-      <!-- Avatar -->
       <div class="dropdown">
         <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">
         <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle"/>
@@ -86,17 +85,101 @@ $libri = getAllBooks($mysqli);
         </ul>
       </div>
     </div>
-    <!-- Right elements -->
   </div>
-  <!-- Container wrapper -->
-</nav>
-<!-- Navbar -->
+</nav>-->
+    <div id="dots" class="text-black">
+          <i class="dots bi bi-three-dots"></i>
+      </div>
+      <div class="container-fluid position-fixed top-0 start-0">
+        <div class="row">
+        <div class="col-md-3 col-sm-12  text-black mt-5 ms-3 mb-3  bg-white rounded">
+            <!---<ul id="nav1" class="list-unstyled mb-2">
+              <li class="nav-item">
+                <div class="mt-5 ms-3 mb-3">
+                  <i class="fas fa-bell fa-lg"></i>
+                </div>
+              </li>
+              
+            </ul>--->
+
+            <div class="mt-5 ms-3 mb-3">
+                  <div class="">
+                    <div class="d-flex ">
+                        <img src="https://mdbootstrap.com/img/new/avatars/11.jpg" class="rounded-circle" alt="" width="150" />
+                    </div> 
+                    <div>
+                        <h4> Ornella Bianchi </h4>
+                    </div>
+                </div>
+            </div>
+            
+
+            <ul id="nav2" class="list-unstyled">
+              <li class="nav-item">
+                <div class="d-flex align-items-center ms-3 mb-3 p-2">
+                  <i class="far fa-file-lines fa-2x"></i>
+                  <p class="m-0 px-3">Classroom</p>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="d-flex align-items-center ms-3 mb-3 p-2">
+                  <i class="far fa-file-word fa-2x"></i>
+                  <p class="m-0 px-3">Homework</p>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="d-flex align-items-center ms-3 mb-3 p-2">
+                  <i class="fas fa-headphones-simple fa-2x"></i>
+                  <p class="m-0 px-3">Audio books</p>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="mylab d-flex align-items-center ms-3 mb-3 bg-primary p-2 rounded-pill text-white">
+                  <i class="fas fa-book fa-2x"></i>
+                  <p class="m-0 px-3">My Library</p>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="d-flex align-items-center ms-3 mb-3 p-2">
+                  <i class="fas fa-user-group fa-2x"></i>
+                  <p class="m-0 px-3">Classmates</p>
+                </div>
+              </li>
+            </ul>
+            <hr>
+            <div>
+                <ul id="nav1" class="list-unstyled mb-2">
+                    <li class="nav-item">
+                        <div class="d-flex align-items-center ms-3 mb-3 p-2">
+                            <i class="fas fa-gear fa-2x"></i>
+                            <p class="m-0 px-3">Settings</p>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="d-flex align-items-center ms-3 mb-3 p-2">
+                        <i class="fas fa-circle-info fa-2x"></i>
+                            <p class="m-0 px-3">Help</p>
+                        </div>
+                    </li>
+                
+                </ul>
+            </div>
+
+          </div>
+          
+          
 
     <!--<button type="button" class="btn btn-primary mt-4 d-flex mx-auto" data-bs-toggle="modal"
         data-bs-target="#modaleAggiunta">
         Aggiungi un libro
     </button>-->
-
+    <div id="albumsection" class="col-md col-sm-12 mt-5 ms-3 mb-3">
+        <div class="d-flex align-items-center">
+            <h2> My Library </h2>
+            <button type="button" class=" btn btn-primary d-flex m-2 " data-mdb-toggle="modal" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#modaleAggiunta">
+        Aggiungi libro
+    </button>
+        </div>
     <table class="table table-hover container mt-5 border">
         <thead id="styletable">
             <tr class="text-center">
@@ -140,7 +223,7 @@ $libri = getAllBooks($mysqli);
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5">Modifica i dati</h1>
+                                <h1 class="modal-title fs-5 text-primary font-weight-bold">Modifica i dati</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -181,6 +264,9 @@ $libri = getAllBooks($mysqli);
             <?php } ?>
         </tbody>
     </table>
+            </div>
+            </div>
+            </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
@@ -193,7 +279,7 @@ $libri = getAllBooks($mysqli);
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5">Dati del libro</h1>
+                <h1 class="modal-title fs-5 text-primary font-weight-bold">Dati del libro</h1>
                 <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

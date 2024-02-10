@@ -63,7 +63,6 @@ function addBook($mysqli, $book)
     $autore = $book['autore'];
     $anno_pubblicazione = $book['anno_pubblicazione'];
     $genere = $book['genere'];
-    //$image = $book['image'];
 
     $sql = "INSERT INTO libri (titolo, autore, anno_pubblicazione, genere) 
                 VALUES ('$titolo', '$autore', '$anno_pubblicazione', '$genere')";
